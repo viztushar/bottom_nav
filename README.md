@@ -1,6 +1,6 @@
 # bottom_nav
 
-A new Flutter package project.
+A bottom navigation bar with expanding titles and icons with Rounded Background. Inspired by the Dribbble design here: https://t.co/BtUlszSmRR
 
 ## Getting Started
 

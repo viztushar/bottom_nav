@@ -1,8 +1,8 @@
 name: bottom_nav
-description: A new Flutter package project.
-version: 0.0.1
-author: Tushar Parmar<viztushar@gmail.com>
-homepage:
+description: A bottom navigation bar with expanding titles and icons with Rounded Background.
+version: 0.1.0
+author: Tushar Parmar <viztushar@gmail.com>
+homepage: https://github.com/viztushar/bottom_nav
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
