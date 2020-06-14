@@ -9,19 +9,21 @@ class BottomNav extends StatefulWidget {
   final ValueChanged<int> onTap;
   final List<BottomNavItem> items;
   final Duration animationDuration;
+  final bool showElevation;
   final Color backgroundColor;
   final double navBarHeight;
   final double radius;
 
-  BottomNav({
-    @required this.index,
-    this.navBarHeight = 100.0,
-    @required this.onTap,
-    @required this.items,
-    this.animationDuration = const Duration(milliseconds: 200),
-    this.backgroundColor = Colors.white,
-    this.radius = 16.0
-  })  : assert(items != null),
+  BottomNav(
+      {@required this.index,
+      this.navBarHeight = 100.0,
+      this.showElevation = true,
+      @required this.onTap,
+      @required this.items,
+      this.animationDuration = const Duration(milliseconds: 200),
+      this.backgroundColor = Colors.white,
+      this.radius = 16.0})
+      : assert(items != null),
         assert(items.length >= 2);
 
   @override
@@ -59,25 +61,36 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     _changeValue();
     return Container(
-      height: widget.navBarHeight,
-      color: widget.backgroundColor,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: widget.items.map((element) {
-            int item = widget.items.indexOf(element);
-            return BottomBarItem(
-              element.icon,
-              widget.navBarHeight,
-              element.label,
-              () {
-                widget.onTap(item);
-              },
-              element.selectedColor,
-              _controllers[item],
-              widget.radius
-            );
-          }).toList(),
+      decoration: BoxDecoration(
+        color: widget.backgroundColor,
+        boxShadow: [
+          if (widget.showElevation)
+            const BoxShadow(
+              color: Colors.black12,
+              blurRadius: 2,
+            ),
+        ],
+      ),
+      child: SafeArea(
+        bottom: true,
+        left: false,
+        right: false,
+        top: false,
+        child: Container(
+          height: widget.navBarHeight,
+          color: widget.backgroundColor,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: widget.items.map((element) {
+                int item = widget.items.indexOf(element);
+                return BottomBarItem(
+                    element.icon, widget.navBarHeight, element.label, () {
+                  widget.onTap(item);
+                }, element.selectedColor, _controllers[item], widget.radius);
+              }).toList(),
+            ),
+          ),
         ),
       ),
     );
@@ -102,7 +115,6 @@ class BottomNavItem {
       @required this.selectedColor});
 }
 
-
 class BottomBarItem extends StatefulWidget {
   final IconData icon;
   final String label;
@@ -112,15 +124,8 @@ class BottomBarItem extends StatefulWidget {
   final AnimationController controller;
   final double radius;
 
-  BottomBarItem(
-    this.icon,
-    this.height,
-    this.label,
-    this.onTap,
-    this.color,
-    this.controller,
-    this.radius
-  );
+  BottomBarItem(this.icon, this.height, this.label, this.onTap, this.color,
+      this.controller, this.radius);
 
   @override
   _BottomBarItemState createState() => _BottomBarItemState();
@@ -194,4 +199,3 @@ class _BottomBarItemState extends State<BottomBarItem>
     );
   }
 }
-

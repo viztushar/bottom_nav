@@ -35,6 +35,7 @@ class _MyHomeState extends State<MyHome> {
       bottomNavigationBar: BottomNav(
         index: currentTab,
         backgroundColor: Colors.white,
+        showElevation: true,
         navBarHeight: 75.0,
         radius: 30.0,
         onTap: (i) {

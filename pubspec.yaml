@@ -1,11 +1,11 @@
 name: bottom_nav
 description: A bottom navigation bar with expanding titles and icons with Rounded Background.
-version: 0.1.0
-author: Tushar Parmar <viztushar@gmail.com>
+version: 0.1.1
+maintainer: Tushar Parmar <viztushar@gmail.com>
 homepage: https://github.com/viztushar/bottom_nav
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
