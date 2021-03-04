@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final Color defaultColor = Colors.grey[700];
+final Color? defaultColor = Colors.grey[700];
 
 final Color defaultOnSelectColor = Colors.blue;
 
@@ -15,11 +15,11 @@ class BottomNav extends StatefulWidget {
   final double radius;
 
   BottomNav(
-      {@required this.index,
+      {required this.index,
       this.navBarHeight = 100.0,
       this.showElevation = true,
-      @required this.onTap,
-      @required this.items,
+      required this.onTap,
+      required this.items,
       this.animationDuration = const Duration(milliseconds: 200),
       this.backgroundColor = Colors.white,
       this.radius = 16.0})
@@ -31,7 +31,7 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
-  int currentIndex;
+  int? currentIndex;
   List<AnimationController> _controllers = [];
 
   @override
@@ -110,9 +110,9 @@ class BottomNavItem {
   Color selectedColor;
 
   BottomNavItem(
-      {@required this.icon,
-      @required this.label,
-      @required this.selectedColor});
+      {required this.icon,
+      required this.label,
+      required this.selectedColor});
 }
 
 class BottomBarItem extends StatefulWidget {
@@ -133,8 +133,8 @@ class BottomBarItem extends StatefulWidget {
 
 class _BottomBarItemState extends State<BottomBarItem>
     with TickerProviderStateMixin {
-  Animation animation;
-  AnimationController controller;
+  late Animation animation;
+  late AnimationController controller;
 
   @override
   void initState() {
