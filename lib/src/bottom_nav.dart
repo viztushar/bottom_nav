@@ -36,7 +36,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    currentIndex = widget.index ?? 0;
+    currentIndex = widget.index;
     super.initState();
     for (int i = 0; i < widget.items.length; i++) {
       _controllers.add(
